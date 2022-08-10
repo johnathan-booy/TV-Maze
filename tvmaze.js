@@ -33,7 +33,6 @@ function extractShowData(data) {
 }
 
 /** Given list of shows, create markup for each and to DOM */
-
 function populateShows(shows) {
 	$showsList.empty();
 
