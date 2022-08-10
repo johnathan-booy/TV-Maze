@@ -48,7 +48,7 @@ function populateShows(shows) {
            <div class="media-body">
              <h5 class="text-dark">${show.name}</h5>
              <div><small>${show.summary}</small></div>
-             <button data-show-id="${show.id}" class="btn btn-outline-primary btn-sm Show-getEpisodes">
+             <button data-show-id="${show.id}" data-show-name="${show.name}" class="btn btn-outline-primary btn-sm Show-getEpisodes">
                Episodes
              </button>
            </div>
@@ -69,8 +69,6 @@ function populateShows(shows) {
 async function searchForShowAndDisplay() {
 	const term = $("#search-query").val();
 	const shows = await getShowsByTerm(term);
-
-	$episodesArea.hide();
 	populateShows(shows);
 }
 
@@ -100,12 +98,15 @@ function extractEpisodeData(data) {
 
 /** Given a list of episodes, create markup for each and append to the DOM*/
 function populateEpisodes(episodes) {
-	$episodesArea.show();
 	$episodesArea.empty();
 
 	for (let episode of episodes) {
 		const $episode = $(
-			`<li class="list-group-item">${episode.name} (Season ${episode.season}, Episode ${episode.number})</li>`
+			`<tr>
+				<td>${episode.name}</td>
+				<td>${episode.season}</td>
+				<td>${episode.number}</td>
+			</tr>`
 		);
 
 		$episodesArea.append($episode);
@@ -117,7 +118,13 @@ function populateEpisodes(episodes) {
  */
 async function searchForEpisodesAndDisplay() {
 	const showId = $(this).data("show-id");
+	const showName = $(this).data("show-name");
 	const episodes = await getEpisodesOfShow(showId);
 	populateEpisodes(episodes);
-	$episodesArea.show();
+	$("#modal-title").text(`${showName}`);
+	$("#modal").modal("show");
 }
+
+$("#modal-close").on("click", function () {
+	$("#modal").modal("hide");
+});
