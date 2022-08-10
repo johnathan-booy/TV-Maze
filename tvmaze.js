@@ -40,21 +40,21 @@ function populateShows(shows) {
 	for (let show of shows) {
 		const $show = $(
 			`<div data-show-id="${show.id}" class="Show col-md-12 col-lg-6 mb-4">
-         <div class="media">
-           <img 
-              src="${show.image}" 
-              alt="${show.name}"
-              class="w-25 mr-3 mb-2">
-           <div class="media-body">
-             <h5 class="text-dark">${show.name}</h5>
-             <div><small>${show.summary}</small></div>
-             <button data-show-id="${show.id}" data-show-name="${show.name}" class="btn btn-outline-primary btn-sm Show-getEpisodes">
-               Episodes
-             </button>
-           </div>
-         </div>  
-       </div>
-      `
+				<div class="media">
+				<img 
+					src="${show.image}" 
+					alt="${show.name}"
+					class="w-25 mr-3 mb-2">
+				<div class="media-body">
+					<h5 class="text-white">${show.name}</h5>
+					<div><small class="text-white">${show.summary}</small></div>
+					<button data-show-id="${show.id}" data-show-name="${show.name}" class="btn btn-outline-primary btn-sm Show-getEpisodes">
+					Episodes
+					</button>
+				</div>
+				</div>  
+			</div>
+			`
 		);
 
 		$showsList.append($show);

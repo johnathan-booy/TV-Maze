@@ -7,26 +7,27 @@
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
 
-<body class="bg-light">
+<body class="bg-dark">
   <div class="container">
 
-    <h1 class="pt-3 pb-3 display-1">TV Maze</h1>
+    <h1 class="pt-3 pb-3 display-1 text-light text-center">TV Maze</h1>
 
-    <form class="form-inline" id="search-form">
-      <input class="form-control mb-2" id="search-query" value="Brooklyn Nine-Nine">
-      <button class="btn btn-primary" type="submit">Go!</button>
+    <form class="form-inline text-center" id="search-form">
+      <div class="input-group">
+        <input class="form-control" id="search-query" placeholder="Brooklyn Nine-Nine">
+        <button class="btn btn-primary" type="submit">Search</button>
+      </div>
     </form>
 
-    <div class="row mt-3" id="shows-list">
+    <div class="row mt-5" id="shows-list">
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
+    <!-- Episodes Modal -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modal-title">Episodes</h5>
+            <h5 class="modal-title" id="modal-title"></h5>
             <button id="modal-close" type="button" class="close btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
           <div class="modal-body">
