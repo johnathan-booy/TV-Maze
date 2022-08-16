@@ -18,18 +18,14 @@ async function getShowsByTerm(term) {
 }
 
 /* Retrieve relevant show data {id, name, summary, image} */
-function extractShowData(data) {
-	const shows = [];
-	for (const entry of data) {
-		const { id, name, summary } = entry.show;
-		const image = entry.show.image
-			? entry.show.image.medium
+function extractShowData(array) {
+	return array.map(function (object) {
+		const { id, name, summary } = object.show;
+		const image = object.show.image
+			? object.show.image.medium
 			: "https://tinyurl.com/tv-missing";
-		const show = { id, name, summary, image };
-		shows.push(show);
-		getEpisodesOfShow(id);
-	}
-	return shows;
+		return { id, name, summary, image };
+	});
 }
 
 /** Given list of shows, create markup for each and to DOM */
